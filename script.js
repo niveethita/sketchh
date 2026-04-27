@@ -40,8 +40,7 @@ canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseleave', () => isDrawing = false);
 
 fillBg.addEventListener('click', () => {
-  ctx.fillStyle = bgColor.value;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  canvas.style.backgroundColor = bgColor.value;
 });
 
 clear.addEventListener('click', () => {
