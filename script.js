@@ -14,20 +14,26 @@ ctx.lineCap = 'round';
 
 eraser.addEventListener('click', () => {
   tool = 'eraser';  
-  ctx.strokeStyle = bgColor.value;
 });
 
 pen.addEventListener('click', () => {
   tool = 'pen';
+  ctx.globalCompositeOperation = 'source-over';
   ctx.strokeStyle = brushColor.value;
 });
 
 canvas.addEventListener('mousedown', (e) => {
   isDrawing = true;
-  ctx.strokeStyle = tool === 'pen' ? brushColor.value : bgColor.value;
   ctx.lineWidth = brushSize.value;
   ctx.beginPath();
   ctx.moveTo(e.offsetX, e.offsetY);
+
+  if (tool === 'eraser') {
+    ctx.globalCompositeOperation = 'destination-out';
+  } else {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = brushColor.value;
+  }
 });
 
 canvas.addEventListener('mousemove', (e) => {
