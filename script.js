@@ -88,13 +88,14 @@ function hexToRgba(hex) {
 }
 
 function floodFill(startX, startY, fillColor) {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const pixels = imageData.data; // flat array [r,g,b,a, r,g,b,a ...]
+   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height); 
+   const pixels = imageData.data; const targetColor = getPixelColor(pixels, startX, startY); 
+   if (colorMatch(targetColor, fillColor)) return; // ← add this
 
-  const targetColor = getPixelColor(pixels, startX, startY); // color you clicked on
   const stack = [[startX, startY]];
 
   while (stack.length) {
+
     const [x, y] = stack.pop();
 
     if (colorMatch(getPixelColor(pixels, x, y), targetColor)) {
@@ -106,8 +107,3 @@ function floodFill(startX, startY, fillColor) {
   ctx.putImageData(imageData, 0, 0); // write back
 }
 
-canvas.addEventListener('click', (e) => {
-  if (tool === 'fillSp') {
-    floodFill(e.offsetX, e.offsetY, hexToRgba(brushColor.value));
-  }
-});
