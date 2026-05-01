@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #f0f7ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  font-family: 'Courier New', monospace;
+}
+
+a {
+  color: #a0c4e8;
+  font-size: 13px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+a:hover {
+  color: #7aaed4;
+}
+
+canvas {
+  background: #fffef5;
+  border-radius: 12px;
+  border: 1.5px dashed #b8d8f0;
+  cursor: crosshair;
+  box-shadow: 6px 6px 0px #d4eaf7;
+}
+
+#toolbar {
+  display: flex;
+  align-items: cen
